@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Angular Demo</title>
+  </head>
+  <body ng-controller="mainCtrl" >
+
+
+    Filter by: name: <input ng-model="nameFilter"/>
+    status: <input ng-model="statusFilter"/>
+
+    <div ng-hide="shouldIBeInvisible" class="to-do-list"
+    ng-repeat="item in toDoList | filter: {name: nameFilter, status: statusFilter } track by $index">
+
+
+      Name: <em ng-click="removeToDo($index)">{{item.name}}</em>
+      <p>Status: {{item.status}}</p>
+    </div>
+
+    <button ng-click="hideToDoList()">Hides to do list</button>
+
+    <br>
+    <input ng-model="newToDoItem"/>
+    <button ng-click="addToDo(newToDoItem)">Add to do</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js">
+    </script>
+
+    <script src="app.js"></script>
+    <script src="mainCtrl.js"></script>
+  </body>
+</html>
